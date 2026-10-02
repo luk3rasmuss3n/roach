@@ -32,7 +32,8 @@
 #include "serial.h"
 #include "AD.h"
 #include "roach.h"
-#include "MiniFSM.h"
+#include "Roachhsm.h"
+#include "Lightsubhsm.h"
 
 /*******************************************************************************
  * MODULE #DEFINES                                                             *
@@ -183,7 +184,7 @@ uint8_t CheckLightupdated(void) {
         returnVal = TRUE;
         lastEvent = curEvent; // update history
 #ifndef EVENTCHECKER_TEST           // keep this as is for test harness
-        PostMiniFSM(thisEvent); 
+        PostRoachHSM(thisEvent); 
 #else
         SaveEvent(thisEvent);
 #endif   

@@ -25,7 +25,7 @@
 #include "BumperService.h"
 #include "roach.h"
 #include <stdio.h>
-#include "MiniFSM.h"
+
 
 /*******************************************************************************
  * MODULE #DEFINES                                                             *
@@ -128,7 +128,7 @@ ES_Event RunBumperService(ES_Event ThisEvent)
             PostEvent.EventParam = sample;           //    which bumpers, as bits
             debouncedBumpers = sample;               // 5. accept it
 #ifndef SIMPLESERVICE_TEST
-            PostMiniFSM(PostEvent);
+            PostRoachHSM(PostEvent); 
 #else
             PostBumperService(PostEvent);            //    test: send to myself to print
 #endif

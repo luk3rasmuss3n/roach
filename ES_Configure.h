@@ -95,9 +95,9 @@ static const char *EventNames[] = {
 // a timers, then you can use TIMER_UNUSED
 #define TIMER_UNUSED ((pPostFunc)0)
 #define TIMER0_RESP_FUNC PostBumperService    // bumper sample timer -> bumper service
-#define TIMER1_RESP_FUNC PostMiniFSM 
-#define TIMER2_RESP_FUNC TIMER_UNUSED
-#define TIMER3_RESP_FUNC TIMER_UNUSED
+#define TIMER1_RESP_FUNC PostRoachHSM   
+#define TIMER2_RESP_FUNC PostRoachHSM 
+#define TIMER3_RESP_FUNC PostRoachHSM 
 #define TIMER4_RESP_FUNC TIMER_UNUSED
 #define TIMER5_RESP_FUNC TIMER_UNUSED
 #define TIMER6_RESP_FUNC TIMER_UNUSED
@@ -119,7 +119,10 @@ static const char *EventNames[] = {
 // the timer number matches where the timer event will be routed
 
 #define BUMPER_TIMER 0    /* must match TIMER0_RESP_FUNC above */
+
 #define MOVE_TIMER   1 
+#define JIG_PERIOD_TIMER 2  
+#define JIG_STEP_TIMER   3  
 
 
 /****************************************************************************/
@@ -163,13 +166,13 @@ static const char *EventNames[] = {
 // These are the definitions for Service 2: the mini state machine
 #if NUM_SERVICES > 2
 // the header file with the public function prototypes
-#define SERV_2_HEADER "MiniFSM.h"
+#define SERV_2_HEADER "RoachHSM.h"
 // the name of the Init function
-#define SERV_2_INIT InitMiniFSM
+#define SERV_2_INIT InitRoachHSM
 // the name of the run function
-#define SERV_2_RUN RunMiniFSM
+#define SERV_2_RUN RunRoachHSM
 // How big should this services Queue be?
-#define SERV_2_QUEUE_SIZE 3
+#define SERV_2_QUEUE_SIZE 16
 #endif
 
 
